@@ -10,6 +10,18 @@ public class AccountDataFetcher {
             return new List<Account>();
         }
     }
+
+    // Method to fetch accounts by industry
+    public static List<Account> fetchAccountsByIndustry(String industry) {
+        try {
+            // Query to fetch account data filtered by industry
+            return [SELECT Id, Name, Industry, AnnualRevenue FROM Account WHERE Industry = :industry];
+        } catch (Exception e) {
+            // Handle any exceptions
+            System.debug('Error fetching accounts by industry: ' + e.getMessage());
+            return new List<Account>();
+        }
+    }
 }
 
 public class AccountDataFetcherController {
