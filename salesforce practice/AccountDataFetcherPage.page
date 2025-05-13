@@ -1,0 +1,9 @@
+<apex:page controller="AccountDataFetcherController">
+    <apex:pageBlock title="Account List">
+        <apex:pageBlockTable value="{!accounts}" var="account">
+            <apex:column value="{!account.Name}" headerValue="Name"/>
+            <apex:column value="{!account.Industry}" headerValue="Industry"/>
+            <apex:column value="{!account.AnnualRevenue}" headerValue="Annual Revenue"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
