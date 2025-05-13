@@ -59,3 +59,28 @@ objNewInvoice.APEX_Customer__c = objCust.id;
 insert objNewInvoice;
 System.debug('New Invoice Id is '+objNewInvoice.id+' and the Invoice Number is'
    + objNewInvoice.Name);
+
+
+//    updserting the new customer record
+List<APEX_Customer__c> customerList = new List<APEX_Customer__c>();
+APEX_Customer__c objCustomer = new APEX_Customer__C();      
+objCustomer.Name = 'Test ABC';
+customerList.add(objCustomer);
+
+    // Example for upserting the Customer records
+List<apex_customer__c> CustomerList = new List<apex_customer__c>();
+for (Integer i = 0; i < 10; i++) {
+   apex_customer__c objcust=new apex_customer__c(name = 'Test' +i,
+   apex_external_id__c='1234' +i);
+   customerlist.add(objcust);
+} //Upserting the Customer Records
+
+upsert CustomerList;
+
+System.debug('Code iterated for 10 times and created 9 records as one record with External Id 12341 is already present');
+
+for (APEX_Customer_c objCustomer: CustomerList) {
+   if (objCustomer.APEX_External_Id_c == '12341') {
+      system.debug('The Record which is already present is '+objCustomer);
+   }
+}
